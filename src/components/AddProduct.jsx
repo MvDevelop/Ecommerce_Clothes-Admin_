@@ -85,7 +85,7 @@ function AddProduct() {
             <label htmlFor="file-input">
               <img src={image?URL.createObjectURL(image):upload_area} className={styles.addproduct_thumnail_img} alt="" />
             </label>
-            <input onChange={imageHandler} type="file" name='image' id='file-input' hidden/>
+            <input onChange={imageHandler} type="file" name='image' id='file-input' hidden accept="image/*"/>
           </div>
           <button onClick={() => {add_product()}} className={styles.addproduct_btn}> ADD </button>
         </div>
