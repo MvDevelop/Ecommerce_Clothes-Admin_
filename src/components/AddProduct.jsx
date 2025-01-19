@@ -4,6 +4,8 @@ import styles from './AddProduct.module.css';
 import upload_area from '../assets/upload_area.svg';
 import { useState } from 'react';
 
+const url = 'https://ecommerce-clothes-backend.onrender.com';
+
 function AddProduct() {
 
   const [ image, setImage ] = useState(false);
@@ -28,7 +30,8 @@ function AddProduct() {
     let formData = new FormData();
     formData.append('product',image);
 
-    await fetch('http://localhost:4000/upload', {
+    //'http://localhost:4000/upload'
+    await fetch(`${url}/upload`, {
       method:'POST',
       headers:{
         Accept:'application/json',
@@ -39,7 +42,8 @@ function AddProduct() {
     if(responseData.success) {
       product.image = responseData.image_url;
       console.log(product);
-      await fetch('http://localhost:4000/addproduct', {
+      //'http://localhost:4000/addproduct'
+      await fetch(`${url}/addproduct`, {
         method:'POST',
         headers:{
           Accept:'application/json',

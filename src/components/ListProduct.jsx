@@ -3,12 +3,15 @@ import { useEffect, useState } from 'react';
 import styles from './ListProduct.module.css';
 import cross_icon from '../assets/cross_icon.png';
 
+const url = 'https://ecommerce-clothes-backend.onrender.com';
+
 function ListProduct() {
 
   const [ allProducts, setAllProducts ] = useState([]);
 
   const fetchInfo = async () => {
-    await fetch('http://localhost:4000/allproducts')
+    //'http://localhost:4000/allproducts'
+    await fetch(`${url}/allproducts`)
     .then((res) => res.json())
     .then((data) => {setAllProducts(data)});
   }
@@ -18,7 +21,8 @@ function ListProduct() {
   },[]);
 
   const remove_product = async (id) => {
-    await fetch('http://localhost:4000/removeproduct', {
+    //'http://localhost:4000/removeproduct'
+    await fetch(`${url}/removeproduct`, {
       method:'POST',
       headers:{
         Accept:'application/json',
